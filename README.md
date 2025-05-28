@@ -5,7 +5,7 @@ This project is a Node.js application built using Express. It serves as a templa
 
 ## Project Structure
 ```
-cse341-project2
+cse341-act3
 ├── src
 │   ├── controllers        # Contains business logic for handling requests
 │   ├── models             # Defines data models and database interactions
@@ -18,10 +18,6 @@ cse341-project2
 
 ## Getting Started
 
-### Prerequisites
-- Node.js (version X.X.X)
-- npm (version X.X.X)
-
 ### Installation
 1. Clone the repository:
    ```
@@ -29,7 +25,7 @@ cse341-project2
    ```
 2. Navigate to the project directory:
    ```
-   cd cse341-project2
+   cd cse341-act3
    ```
 3. Install the dependencies:
    ```
@@ -41,7 +37,7 @@ To start the application, run:
 ```
 npm start
 ```
-The application will be available at `http://localhost:3000`.
+The application will be available at `http://localhost:8080`.
 
 ## Usage
 - The API endpoints can be accessed using tools like Postman or curl.
@@ -49,6 +45,3 @@ The application will be available at `http://localhost:3000`.
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
-
-## License
-This project is licensed under the MIT License.
