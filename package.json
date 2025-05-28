@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "description": "A project for CSE 341",
   "main": "src/app.js",
+  "type": "module",
   "scripts": {
     "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^16.5.0",
+    "express": "^4.17.1",
+    "mongodb": "^6.16.0"
   },
-  "devDependencies": {},
   "keywords": [],
   "author": "",
   "license": "ISC"
