@@ -17,8 +17,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^22.15.24"
-  }
+  "license": "ISC"
 }
