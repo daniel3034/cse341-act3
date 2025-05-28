@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Wireless Mouse",
+    "description": "Ergonomic wireless mouse with adjustable DPI.",
+    "price": 24.99,
+    "category": "Electronics",
+    "stock": 50,
+    "sku": "ELEC-MOUSE-001",
+    "manufacturer": "LogiTech"
+  },
+  {
+    "name": "Bluetooth Headphones",
+    "description": "Noise-cancelling over-ear headphones.",
+    "price": 79.99,
+    "category": "Electronics",
+    "stock": 30,
+    "sku": "ELEC-HEAD-002",
+    "manufacturer": "SoundMagic"
+  },
+  {
+    "name": "Water Bottle",
+    "description": "Stainless steel insulated water bottle, 1L.",
+    "price": 15.5,
+    "category": "Home & Kitchen",
+    "stock": 100,
+    "sku": "HOME-BOTTLE-003",
+    "manufacturer": "Hydro Flask"
+  },
+  {
+    "name": "Yoga Mat",
+    "description": "Non-slip yoga mat with carrying strap.",
+    "price": 27.99,
+    "category": "Sports",
+    "stock": 40,
+    "sku": "SPORT-YOGA-004",
+    "manufacturer": "YogaPro"
+  },
+  {
+    "name": "Desk Lamp",
+    "description": "LED desk lamp with adjustable brightness.",
+    "price": 20.75,
+    "category": "Office Supplies",
+    "stock": 60,
+    "sku": "OFFICE-LAMP-005",
+    "manufacturer": "BrightLite"
+  }
+]
