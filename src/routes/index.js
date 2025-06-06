@@ -1,5 +1,7 @@
+import { ensureAuthenticated } from '../auth/auth.js';
 import express from 'express';
 import * as controllers from '../controllers/index.js';
+
 
 const router = express.Router();
 
@@ -44,6 +46,13 @@ router.get('/items/:id', controllers.getItemById);
  * /api/items:
  *   post:
  *     summary: Create a new item
+ *     parameters:
+ *       - in: header
+ *         name: Cookie
+ *         schema:
+ *           type: string
+ *         required: false
+ *         description: Session cookie (connect.sid=...)
  *     requestBody:
  *       required: true
  *       content:
@@ -71,7 +80,7 @@ router.get('/items/:id', controllers.getItemById);
  *       400:
  *         description: Invalid item data
  */
-router.post('/items', controllers.createItem);
+router.post('/items', ensureAuthenticated, controllers.createItem);
 
 /**
  * @swagger
@@ -84,6 +93,12 @@ router.post('/items', controllers.createItem);
  *         required: true
  *         schema:
  *           type: string
+ *       - in: header
+ *         name: Cookie
+ *         schema:
+ *           type: string
+ *         required: false
+ *         description: Session cookie (connect.sid=...)
  *     requestBody:
  *       required: true
  *       content:
@@ -98,7 +113,7 @@ router.post('/items', controllers.createItem);
  *       404:
  *         description: Item not found
  */
-router.put('/items/:id', controllers.updateItem);
+router.put('/items/:id', ensureAuthenticated, controllers.updateItem);
 
 /**
  * @swagger
@@ -111,12 +126,18 @@ router.put('/items/:id', controllers.updateItem);
  *         required: true
  *         schema:
  *           type: string
+ *       - in: header
+ *         name: Cookie
+ *         schema:
+ *           type: string
+ *         required: false
+ *         description: Session cookie (connect.sid=...)
  *     responses:
  *       200:
  *         description: Item deleted
  *       404:
  *         description: Item not found
  */
-router.delete('/items/:id', controllers.deleteItem);
+router.delete('/items/:id', ensureAuthenticated, controllers.deleteItem);
 
 export default router;

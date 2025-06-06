@@ -3,6 +3,10 @@ import routes from './routes/index.js';
 import client from './models/db.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
+import session from 'express-session';
+import passport from 'passport';
+import './auth/passport.js';
+import authRoutes from './routes/auth.js';
 
 const app = express();
 app.use(express.json());
@@ -34,3 +38,12 @@ client.connect()
     console.error('Failed to connect to MongoDB', err);
     process.exit(1);
   });
+
+  app.use(session({
+  secret: process.env.SESSION_SECRET || 'Secret',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use('/auth', authRoutes);
