@@ -19,7 +19,11 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/me', (req, res) => {
-  res.json({ user: req.user });
+  if (req.session && req.session.passport && req.session.passport.user) {
+    res.send(`Logged in as ${req.session.passport.user.displayName || req.session.passport.user.username}`);
+  } else {
+    res.send('Logged Out');
+  }
 });
 
 export default router;
