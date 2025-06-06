@@ -4,6 +4,7 @@ import client from './models/db.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import session from 'express-session';
+import MongoStore from 'connect-mongo';
 import passport from 'passport';
 import './auth/passport.js';
 import authRoutes from './routes/auth.js';
@@ -42,7 +43,11 @@ client.connect()
   app.use(session({
   secret: process.env.SESSION_SECRET || 'Secret',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+    collectionName: 'sessions'
+  })
 }));
 app.use(passport.initialize());
 app.use(passport.session());
