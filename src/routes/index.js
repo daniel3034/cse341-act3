@@ -46,13 +46,6 @@ router.get('/items/:id', controllers.getItemById);
  * /api/items:
  *   post:
  *     summary: Create a new item
- *     parameters:
- *       - in: header
- *         name: Cookie
- *         schema:
- *           type: string
- *         required: false
- *         description: Session cookie (connect.sid=...)
  *     requestBody:
  *       required: true
  *       content:
@@ -93,12 +86,6 @@ router.post('/items', ensureAuthenticated, controllers.createItem);
  *         required: true
  *         schema:
  *           type: string
- *       - in: header
- *         name: Cookie
- *         schema:
- *           type: string
- *         required: false
- *         description: Session cookie (connect.sid=...)
  *     requestBody:
  *       required: true
  *       content:
@@ -126,12 +113,6 @@ router.put('/items/:id', ensureAuthenticated, controllers.updateItem);
  *         required: true
  *         schema:
  *           type: string
- *       - in: header
- *         name: Cookie
- *         schema:
- *           type: string
- *         required: false
- *         description: Session cookie (connect.sid=...)
  *     responses:
  *       200:
  *         description: Item deleted

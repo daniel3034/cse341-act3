@@ -47,8 +47,7 @@ client.connect()
   store: MongoStore.create({
     mongoUrl: process.env.MONGODB_URI,
     collectionName: 'sessions'
-  }),
-  cookie: { httpOnly: false } // <--- for testing only!
+  })
 }));
 app.use(passport.initialize());
 app.use(passport.session());
