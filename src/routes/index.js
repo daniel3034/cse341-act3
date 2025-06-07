@@ -1,6 +1,7 @@
 import { ensureAuthenticated } from '../auth/auth.js';
 import express from 'express';
 import * as controllers from '../controllers/index.js';
+import { User } from '../models/index.js';
 
 
 const router = express.Router();
@@ -120,5 +121,36 @@ router.put('/items/:id', controllers.updateItem);
  *         description: Item not found
  */
 router.delete('/items/:id', controllers.deleteItem);
+
+/**
+ * @swagger
+ * /auth/me:
+ *   get:
+ *     summary: Get the currently logged-in and registered user
+ *     responses:
+ *       200:
+ *         description: User is logged in and registered
+ *         content:
+ *           text/plain:
+ *             schema:
+ *               type: string
+ *       401:
+ *         description: Not logged in
+ *       404:
+ *         description: User not registered
+ */
+router.get('/auth/me', ensureAuthenticated, async (req, res) => {
+  if (req.user && req.user.emails && req.user.emails[0] && req.user.emails[0].value) {
+    const email = req.user.emails[0].value;
+    const user = await User.findOne({ email });
+    if (user) {
+      res.send(`Logged in and registered as ${user.name} (${user.email})`);
+    } else {
+      res.status(404).send('User not registered');
+    }
+  } else {
+    res.status(401).send('Not logged in');
+  }
+});
 
 export default router;
