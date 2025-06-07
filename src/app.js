@@ -9,6 +9,7 @@ import passport from 'passport';
 import './auth/passport.js';
 import authRoutes from './routes/auth.js';
 
+
 const app = express();
 app.use(express.json());
 
