@@ -75,7 +75,7 @@ router.get('/items/:id', controllers.getItemById);
  *       400:
  *         description: Invalid item data
  */
-router.post('/items', controllers.createItem);
+router.post('/items', ensureAuthenticated, controllers.createItem);
 
 /**
  * @swagger
@@ -102,7 +102,7 @@ router.post('/items', controllers.createItem);
  *       404:
  *         description: Item not found
  */
-router.put('/items/:id', controllers.updateItem);
+router.put('/items/:id', ensureAuthenticated, controllers.updateItem);
 
 /**
  * @swagger
@@ -121,7 +121,7 @@ router.put('/items/:id', controllers.updateItem);
  *       404:
  *         description: Item not found
  */
-router.delete('/items/:id', controllers.deleteItem);
+router.delete('/items/:id', ensureAuthenticated, controllers.deleteItem);
 
 /**
  * @swagger
