@@ -28,6 +28,20 @@ const swaggerOptions = {
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'Secret',
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+    collectionName: 'sessions'
+  })
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes
+app.use('/auth', authRoutes);
 app.use('/api', routes);
 
 const PORT = 8080;
@@ -40,16 +54,3 @@ client.connect()
     console.error('Failed to connect to MongoDB', err);
     process.exit(1);
   });
-
-  app.use(session({
-  secret: process.env.SESSION_SECRET || 'Secret',
-  resave: false,
-  saveUninitialized: false,
-  store: MongoStore.create({
-    mongoUrl: process.env.MONGODB_URI,
-    collectionName: 'sessions'
-  })
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use('/auth', authRoutes);
